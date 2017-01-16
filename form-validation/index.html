@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Form Validation</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<form onsubmit="return checkFields()" method="post" action="login.php">
+    <div class="form-group" id="emailGroup">
+        <label class="control-label" for="exampleInputEmail1">Email address</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" onblur="checkEmail()">
+        <span class="help-block" id="emailHelp"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <span class="help-block"></span>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> I agree
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+<script>
+    function checkEmail() {
+        // console.log("In Email");
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        var email = $('#exampleInputEmail1').val();
+        if(email == '') {
+            // console.log('Empty Email');
+            $('#emailHelp').html("Empty Email");
+            $('#emailGroup').removeClass("has-success");
+            $('#emailGroup').addClass("has-error");
+            return false;
+        }
+        else if(!regex.test(email)) {
+            // console.log("Invalid Email");
+            $('#emailHelp').html("Invalid Email");
+            $('#emailGroup').removeClass("has-success");
+            $('#emailGroup').addClass("has-error");
+            return false;
+        }
+        else {
+            $('#emailHelp').html("");
+            $('#emailGroup').removeClass("has-error");
+            $('#emailGroup').addClass("has-success");
+            return true;
+        }
+    }
+    function checkPassword() {
+        console.log("In Password");
+        return false;
+    }
+    function checkAgree() {
+        console.log("In Agree");
+        return true;
+    }
+    function checkFields() {
+        var isFormValid = true;
+        console.log("Execution Started");
+        if(!checkEmail()) {
+            isFormValid = false;
+        }
+        if(!checkPassword()) {
+            isFormValid = false;
+        }
+        if(!checkAgree()) {
+            isFormValid = false;
+        }
+        console.log("Execution Ended");
+        return isFormValid;
+    }
+</script>
+</body>
+</html>
