@@ -1,0 +1,21 @@
+
+.css-btn-primary {
+    background-color: #489A81;
+    padding: 5px 36px;
+    height:36px
+}
+
+
+.css-btn-primary:hover {
+    background-color: #247c61;
+}
+
+.css-btn-primary:focus {
+    background-color: #489A81;
+    outline: 2px #a4dbe5 solid;
+}
+
+.css-btn-primary:active {
+    background-color: #247c61 !important;
+    outline: 2px #a4dbe5 solid;
+}
